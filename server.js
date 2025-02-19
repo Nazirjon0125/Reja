@@ -23,7 +23,7 @@ app.post("/create-item", (req, res) => {
 
 // get datebas dan malumotni uqish uchun
 app.get("/", function (req, res) {
-  resizeBy.render("harid");
+  res.render("harid");
 });
 
 // app.get("/hello", function (req, res) {
