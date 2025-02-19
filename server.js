@@ -4,15 +4,15 @@ const app = express();
 const http = require("http");
 
 // 1 kirish code
-app.use(express.static("public"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public")); //har qanday brauserdan kirilganda public folderi ochiq degani
+app.use(express.json()); //  json formatdagi datani object formatga o'girib beradi
+app.use(express.urlencoded({ extended: true })); // HTML dan form requiest qilib beradi
 
 // 2 Session
 
 // 3 Views code
 app.set("views", "views");
-app.set("view engine", "ejs");
+app.set("view engine", "ejs"); // EJS da backend orqali frontedni yasaymiz
 
 // 4 Routing code
 app.get("/hello", function (req, res) {
