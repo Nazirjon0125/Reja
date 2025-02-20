@@ -2,6 +2,16 @@ console.log("Web serverni boshlash");
 const express = require("express");
 const app = express();
 const http = require("http");
+const fs = require("fs");
+
+let user;
+fs.readFile("database/user.json", "utf8", (err, data) => {
+  if (err) {
+    console.log("ERROR:", err);
+  } else {
+    user = JSON.parse(data);
+  }
+});
 
 // 1 kirish code
 app.use(express.static("public")); //har qanday brauserdan kirilganda public folderi ochiq degani
@@ -21,18 +31,14 @@ app.post("/create-item", (req, res) => {
   res.json({ test: "success" });
 });
 
+app.get("/author", function (req, res) {
+  res.render("author", { user: user });
+});
+
 // get datebas dan malumotni uqish uchun
 app.get("/", function (req, res) {
   res.render("harid");
 });
-
-// app.get("/hello", function (req, res) {
-//   res.end(`<h1>HELLO WORLD by John</h1>`);
-// });
-
-// app.get("/gift", function (req, res) {
-//   res.end(`<h1>Siz sovgalar bolimidasiz</h1>`);
-// });
 
 const server = http.createServer(app);
 let PORT = 3000;
