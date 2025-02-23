@@ -1,4 +1,8 @@
-// NodeJS event loop va Callback functionlarni o'rganamiz
+// 20 NodeJS event loop va Callback functionlarni o'rganamiz
+
+// synchronous -> srazu ishga tushib javobni ham tezda talab qiladi
+// asynchronous -> sync ishga tushib bolgandan kegin ishga tushadi
+
 console.log("Jack Ma maslahatlari");
 const list = [
   "yaxshi talaba boling", // 20
@@ -9,30 +13,74 @@ const list = [
   "endi dam oling, foydasi yoq", //60
 ];
 
-function maslahatBering(age, callback) {
-  if (typeof age !== "number") callback("insert a number", null);
-  else if (age <= 20) callback(null, list[0]);
-  else if (age > 20 && age <= 30) callback(null, list[1]);
-  else if (age > 30 && age <= 40) callback(null, list[2]);
-  else if (age > 40 && age <= 50) callback(null, list[3]);
-  else if (age > 50 && age <= 60) callback(null, list[4]);
+// function maslahatBering(age, callback) {
+//   if (typeof age !== "number") callback("insert a number", null);
+//   else if (age <= 20) callback(null, list[0]);
+//   else if (age > 20 && age <= 30) callback(null, list[1]);
+//   else if (age > 30 && age <= 40) callback(null, list[2]);
+//   else if (age > 40 && age <= 50) callback(null, list[3]);
+//   else if (age > 50 && age <= 60) callback(null, list[4]);
+//   else {
+//     setInterval(function () {
+//       callback(null, list[5]);
+//     }, 1000);
+
+//     setTimeout(function () {
+//       callback(null, list[5]);
+//     }, 5000);
+//     // callback(null, list[5]);
+//   }
+// }
+
+// console.log("passed here 0");
+// maslahatBering(65, (err, data) => {
+//   //   if (err) console.log("ERROR:", err);
+//   //   console.log("javob:", data);
+
+//   if (err) console.log("ERROR:", err);
+//   else {
+//     console.log("javob:", data);
+//   }
+// });
+// console.log("passed here 1");
+
+// Asynchronous functionlarni qo'llash
+
+async function maslahatBering(age) {
+  if (typeof age !== "number") throw new Error("insert a number");
+  else if (age <= 20) return list[0];
+  else if (age > 20 && age <= 30) return list[1];
+  else if (age > 30 && age <= 40) return list[2];
+  else if (age > 40 && age <= 50) return list[3];
+  else if (age > 50 && age <= 60) return list[4];
   else {
-    setTimeout(function () {
-      callback(null, list[5]);
-    }, 5000);
-    // callback(null, list[5]);
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(list[5]);
+      }, 5000);
+    });
   }
 }
 
-console.log("passed here 0");
-maslahatBering(65, (err, data) => {
-  //   if (err) console.log("ERROR:", err);
-  //   console.log("javob:", data);
+// call via async && await
+async function run() {
+  let javob = await maslahatBering(20);
+  console.log(javob);
+  javob = await maslahatBering(70);
+  console.log(javob);
+  javob = await maslahatBering(41);
+  console.log(javob);
+}
+run();
 
-  if (err) console.log("ERROR:", err);
-  else {
-    console.log("javob:", data);
-  }
-});
+// call via then && catch
+// console.log("passed here 0");
+// maslahatBering(20)
+//   .then((data) => {
+//     console.log("javob:", data);
+//   })
+//   .catch((err) => {
+//     console.log("ERROR:", err);
+//   });
 
-console.log("passed here 1");
+// console.log("passed here 1");
