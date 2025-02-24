@@ -9,6 +9,18 @@ MASALAN countLetter("e", "engineer") 3ni return qiladi.
 
 Qilgan Yechimingiz…*/
 
+function countLetter(e, engineer) {
+  let count = 0;
+  for (let char of engineer) {
+    if (char === e) {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countLetter("e", "engineer"));
+
 // 20 NodeJS event loop va Callback functionlarni o'rganamiz
 
 // synchronous -> srazu ishga tushib javobni ham tezda talab qiladi
