@@ -19,7 +19,7 @@ function countLetter(e, engineer) {
   return count;
 }
 
-console.log(countLetter("e", "engineer"));
+console.log(countLetter("a", "engineer"));
 
 // 20 NodeJS event loop va Callback functionlarni o'rganamiz
 
