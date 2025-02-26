@@ -1,49 +1,30 @@
-console.log("Web serverni boshlash");
-const express = require("express");
-const app = express();
 const http = require("http");
-const fs = require("fs");
+const mongodb = require(mongodb);
 
-let user;
-fs.readFile("database/user.json", "utf8", (err, data) => {
-  if (err) {
-    console.log("ERROR:", err);
-  } else {
-    user = JSON.parse(data);
+let db;
+const connectionString = "mongodb+srv://nazirjon_n:01251996n@cluster0.71u6m.mongodb.net/reja";
+
+mongodb.connect(
+  connectionString,
+  {
+    userNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err, client) => {
+    if (err) console.log("ERROR on connection MongoDB");
+    else {
+        console.log("MongoDB connection succeed");
+        console.log(client);
+        module.exports = client;
+
+        const app = require("./app");
+        const server = http.createServer(app);
+        let PORT = 3000;
+        server.listen(PORT, function () {
+        console.log(
+          `The server is running successfully on port: ${PORT}, http://localhost:${PORT}`
+        );
+      });
+    }
   }
-});
-
-// 1 kirish code
-app.use(express.static("public")); //har qanday brauserdan kirilganda public folderi ochiq degani
-app.use(express.json()); //  json formatdagi datani object formatga o'girib beradi
-app.use(express.urlencoded({ extended: true })); // HTML dan form requiest qilib beradi
-
-// 2 Session
-
-// 3 Views code
-app.set("views", "views");
-app.set("view engine", "ejs"); // EJS da backend orqali frontedni yasaymiz
-
-// 4 Routing code
-// POST malumotni olib kelib datebase ga yozadi
-app.post("/create-item", (req, res) => {
-  console.log(req.body);
-  res.json({ test: "success" });
-});
-
-app.get("/author", function (req, res) {
-  res.render("author", { user: user });
-});
-
-// get datebas dan malumotni uqish uchun
-app.get("/", function (req, res) {
-  res.render("reja");
-});
-
-const server = http.createServer(app);
-let PORT = 3000;
-server.listen(PORT, function () {
-  console.log(
-    `The server is running successfully on port: ${PORT}, http://localhost:${PORT}`
-  );
-});
+);
