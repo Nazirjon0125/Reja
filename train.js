@@ -1,3 +1,23 @@
+/*B-TASK: 
+
+Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
+MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
+
+@MITASK
+*/
+
+function countLetter(son) {
+  let count = 0;
+  for (let a = 0; a < son.length; a++) {
+    if (son[a] >= "0" && son[a] <= "9") {
+      count++;
+    }
+  }
+  return count;
+}
+
+console.log(countLetter("ad2a54y79wet0sfgb9"));
+
 /*TASK A
 Harf sifatida kiritilgan birinchi parametr, kiritilgan ikkinchi parametr tarkibida nechta ekanligini qaytaruvchi
 Funktsiya tuzing
@@ -9,17 +29,17 @@ MASALAN countLetter("e", "engineer") 3ni return qiladi.
 
 Qilgan Yechimingiz…*/
 
-function countLetter(e, engineer) {
-  let count = 0;
-  for (let char of engineer) {
-    if (char === e) {
-      count++;
-    }
-  }
-  return count;
-}
+// function countLetter(e, engineer) {
+//   let count = 0;
+//   for (let char of engineer) {
+//     if (char === e) {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
 
-console.log(countLetter("a", "engineer"));
+// console.log(countLetter("a", "engineer"));
 
 // 20 NodeJS event loop va Callback functionlarni o'rganamiz
 
