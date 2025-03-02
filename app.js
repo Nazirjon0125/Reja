@@ -14,6 +14,7 @@ fs.readFile("database/user.json", "utf8", (err, data) => {
 });
 // MongoDB chaqirish
 const db = require("./server").db();
+const mongodb = require("mongodb");
 
 // 1 kirish code
 app.use(express.static("public")); //har qanday brauserdan kirilganda public folderi ochiq degani
@@ -39,6 +40,36 @@ app.post("/create-item", (req, res) => {
     //   res.end("Successfully added");
     // }
   });
+});
+
+app.post("/delete-item", (req, res) => {
+  const id = req.body.id;
+  db.collection("plans").deleteOne(
+    { _id: new mongodb.ObjectId(id) },
+    function (err, data) {
+      res.json({ state: "success" });
+    }
+  );
+});
+
+app.post("/edit-item", (req, res) => {
+  const data = req.body;
+  console.log(data);
+  db.collection("plans").findOneAndUpdate(
+    { _id: new mongodb.ObjectId(data.id) },
+    { $set: { reja: data.new_input } },
+    function (err, data) {
+      res.json({ state: "success" });
+    }
+  );
+});
+
+app.post("/delete-all", (req, res) => {
+  if (req.body.delete_all) {
+    db.collection("plans").deleteMany(function () {
+      res.json({ state: "hamma rejalar o'chirildi" });
+    });
+  }
 });
 
 app.get("/author", function (req, res) {
