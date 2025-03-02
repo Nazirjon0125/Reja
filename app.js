@@ -31,12 +31,13 @@ app.post("/create-item", (req, res) => {
   console.log("user entered /create-item");
   const new_reja = req.body.reja;
   db.collection("plans").insertOne({ reja: new_reja }, (err, data) => {
-    if (err) {
-      console.log(err);
-      res.end("Something went wrong");
-    } else {
-      res.end("Successfully added");
-    }
+    res.json(data.ops[0]);
+    // if (err) {
+    //   console.log(err);
+    //   res.end("Something went wrong");
+    // } else {
+    //   res.end("Successfully added");
+    // }
   });
 });
 
@@ -52,7 +53,7 @@ app.get("/", function (req, res) {
         console.log(err);
         res.end("something went wrong");
       } else {
-        console.log(data);
+        // console.log(data);
         res.render("reja", { items: data });
       }
     });

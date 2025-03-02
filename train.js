@@ -1,3 +1,8 @@
+// MITASK-C
+
+// Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin, hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin.
+// MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud! shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
+
 /*B-TASK: 
 
 Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
@@ -6,17 +11,17 @@ MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
 @MITASK
 */
 
-function countLetter(son) {
-  let count = 0;
-  for (let a = 0; a < son.length; a++) {
-    if (son[a] >= "0" && son[a] <= "9") {
-      count++;
-    }
-  }
-  return count;
-}
+// function countLetter(son) {
+//   let count = 0;
+//   for (let a = 0; a < son.length; a++) {
+//     if (son[a] >= "0" && son[a] <= "9") {
+//       count++;
+//     }
+//   }
+//   return count;
+// }
 
-console.log(countLetter("ad2a54y79wet0sfgb9"));
+// console.log(countLetter("ad2a54y79wet0sfgb9"));
 
 /*TASK A
 Harf sifatida kiritilgan birinchi parametr, kiritilgan ikkinchi parametr tarkibida nechta ekanligini qaytaruvchi
