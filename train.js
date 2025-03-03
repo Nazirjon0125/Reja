@@ -29,7 +29,7 @@ class Shop {
 
     if (this[nomi] < miqdor) {
       console.log(
-        `${vaqt} sizda ${miqdor} ta  ${nomi} mahsuloti yo'q, Faqat ${this[nomi]} ta ${nomi} mavjud. `
+        `${vaqt} Sizda ${miqdor} ta  ${nomi} mahsuloti yo'q, Faqat ${this[nomi]} ta ${nomi} mavjud. `
       );
     }
     this[nomi] -= miqdor;
@@ -39,7 +39,7 @@ class Shop {
   qabul(nomi, miqdor) {
     const vaqt = new Date().toLocaleTimeString();
     if (!this[nomi]) {
-      console.log(`${vaqt} Bunday mahsulot yoq`);
+      console.log(`${vaqt} Bunday mahsulot yo'q`);
     } else {
       this[nomi] += miqdor;
       console.log(`${vaqt} Siz hozir ${nomi} ${miqdor} ta qabul qilib oldiz`);
@@ -50,75 +50,11 @@ class Shop {
 const shop = new Shop(4, 5, 2);
 
 shop.qoldiq();
-shop.sotish("non", 5);
-shop.qabul("olma", 4);
+shop.sotish("non", 2);
+shop.qabul("suv", 4);
 setTimeout(() => {
   shop.qoldiq();
 }, 5000);
-
-// ChatGPT
-
-// class Shop {
-//   constructor(non, lagmon, cola) {
-//     this.products = {
-//       non: non,
-//       lagmon: lagmon,
-//       cola: cola,
-//     };
-//   }
-
-//   // Mahsulot sotish
-//   sotish(nomi, miqdor) {
-//     const vaqt = new Date().toLocaleTimeString();
-
-//     if (!this.products.hasOwnProperty(nomi)) {
-//       console.log(`Xatolik: Bunday mahsulot mavjud emas!`);
-//       return;
-//     }
-
-//     if (this.products[nomi] < miqdor) {
-//       console.log(
-//         `Xatolik: Kechirasiz, ${miqdor} ta ${nomi} yo'q. Faqat ${this.products[nomi]} ta mavjud.`
-//       );
-//       return;
-//     }
-
-//     this.products[nomi] -= miqdor;
-
-//     console.log(`Hozir ${vaqt} da ${miqdor} ta ${nomi} sotildi.`);
-//   }
-
-//   // Mahsulot qabul qilish
-//   qabul(nomi, miqdor) {
-//     const vaqt = new Date().toLocaleTimeString();
-
-//     if (!this.products.hasOwnProperty(nomi)) {
-//       console.log(`Xatolik: Bunday mahsulot mavjud emas!`);
-//       return;
-//     }
-
-//     this.products[nomi] += miqdor;
-//     console.log(`Hozir ${vaqt} da ${miqdor} ta ${nomi} qabul qilindi.`);
-//   }
-
-//   // Qoldiq
-//   qoldiq() {
-//     const vaqt = new Date().toLocaleTimeString();
-//     console.log(
-//       `Hozir ${vaqt} da ${this.products.non} ta non, ${this.products.lagmon} ta lag'mon va ${this.products.cola} ta cola mavjud!`
-//     );
-//   }
-// }
-
-// Chaqirish
-// const shop = new Shop(4, 5, 2);
-
-// shop.qoldiq(); //birinchi
-// shop.sotish("non", 3); //
-// // shop.sotish("lagmon", 2);
-// // shop.sotish("cola", 1);
-// shop.qabul(); // qo'shish
-// shop.qoldiq(); //sotilgandan qolgani
 
 /*B-TASK: 
 
