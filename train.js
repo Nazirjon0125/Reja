@@ -24,16 +24,14 @@ class Shop {
 
     if (!this[nomi]) {
       console.log(`${vaqt} Bunday maxsulot yo'q`);
-      return;
-    }
-
-    if (this[nomi] < miqdor) {
+    } else if (this[nomi] < miqdor) {
       console.log(
         `${vaqt} Sizda ${miqdor} ta  ${nomi} mahsuloti yo'q, Faqat ${this[nomi]} ta ${nomi} mavjud. `
       );
+    } else {
+      this[nomi] -= miqdor;
+      console.log(`${vaqt} Hozir ${miqdor} ta ${nomi} sotildi`);
     }
-    this[nomi] -= miqdor;
-    console.log(`${vaqt} Hozir ${miqdor} ta ${nomi} sotildi`);
   }
 
   qabul(nomi, miqdor) {
@@ -50,12 +48,13 @@ class Shop {
 const shop = new Shop(4, 5, 2);
 
 shop.qoldiq();
-shop.sotish("non", 2);
+console.log(shop);
+shop.sotish("non", 7);
 shop.qabul("suv", 4);
-setTimeout(() => {
-  shop.qoldiq();
-}, 5000);
-
+// setTimeout(() => {
+//   shop.qoldiq();
+// }, 5000);
+shop.qoldiq();
 /*B-TASK: 
 
 Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
