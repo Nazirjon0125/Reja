@@ -1,7 +1,71 @@
 // MITASK-C
 
-// Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin, hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin.
-// MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud! shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
+// Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin,
+//  hamda classning 3ta methodi bolsin, biri qoldiq, biri sotish va biri qabul. Har bir method ishga tushgan vaqt ham log qilinsin.
+// MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud!
+// shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
+
+class Shop {
+  constructor(non, lagmon, cola) {
+    this.products = {
+      non: non,
+      lagmon: lagmon,
+      cola: cola,
+    };
+  }
+
+  // Mahsulot sotish
+  sotish(nomi, miqdor) {
+    const vaqt = new Date().toLocaleTimeString();
+
+    if (!this.products.hasOwnProperty(nomi)) {
+      console.log(`Xatolik: Bunday mahsulot mavjud emas!`);
+      return;
+    }
+
+    if (this.products[nomi] < miqdor) {
+      console.log(
+        `Xatolik: Kechirasiz, ${miqdor} ta ${nomi} yo'q. Faqat ${this.products[nomi]} ta mavjud.`
+      );
+      return;
+    }
+
+    this.products[nomi] -= miqdor;
+
+    console.log(`Hozir ${vaqt} da ${miqdor} ta ${nomi} sotildi.`);
+  }
+
+  // Mahsulot qabul qilish
+  qabul(nomi, miqdor) {
+    const vaqt = new Date().toLocaleTimeString();
+
+    if (!this.products.hasOwnProperty(nomi)) {
+      console.log(`Xatolik: Bunday mahsulot mavjud emas!`);
+      return;
+    }
+
+    this.products[nomi] += miqdor;
+    console.log(`Hozir ${vaqt} da ${miqdor} ta ${nomi} qabul qilindi.`);
+  }
+
+  // Qoldiq
+  qoldiq() {
+    const vaqt = new Date().toLocaleTimeString();
+    console.log(
+      `Hozir ${vaqt} da ${this.products.non} ta non, ${this.products.lagmon} ta lag'mon va ${this.products.cola} ta cola mavjud!`
+    );
+  }
+}
+
+// Chaqirish
+const shop = new Shop(5, 5, 5);
+
+shop.qoldiq(); //birinchi
+shop.sotish("non", 1); //
+shop.sotish("lagmon", 2);
+shop.sotish("cola", 1);
+shop.qabul(); // qo'shish
+shop.qoldiq(); //sotilgandan qolgani
 
 /*B-TASK: 
 
