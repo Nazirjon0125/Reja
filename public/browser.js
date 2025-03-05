@@ -27,7 +27,7 @@ function itemTemplete(item) {
 let createField = document.getElementById("create-field");
 console.log(createField);
 document.getElementById("create-form").addEventListener("submit", function (e) {
-  e.preventDefault();
+  e.preventDefault(); // STOP: traditional API
 
   axios
     .post("/create-item", { reja: createField.value })

@@ -1,3 +1,25 @@
+// D-TASK:
+
+// Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
+// MASALAN checkContent("mitgroup", "gmtiprou") return qiladi true;
+
+// const a = "hello";
+// const b = a.split("");
+// console.log(b.sort());
+
+// const c = "olleh";
+// const d = c.split("");
+// console.log(d.sort());
+
+function mit(a, b) {
+  const c = a.split("").sort().join("");
+  const d = b.split("").sort().join("");
+
+  return c === d;
+}
+
+console.log(mit("mitgroup", "gmtiptou"));
+
 // MITASK-C
 
 // Shunday class tuzing tuzing nomi Shop, va uni constructoriga 3 hil mahsulot pass bolsin,
@@ -5,62 +27,63 @@
 // MASALAN: const shop = new Shop(4, 5, 2); shop.qoldiq() return hozir 20:40da 4ta non, 5ta lagmon va 2ta cola mavjud!
 // shop.sotish('non', 3) & shop.qabul('cola', 4) & shop.qoldiq() return hozir 20:50da 1ta non, 5ta lagmon va 6ta cola mavjud!
 
-class Shop {
-  constructor(non, lapsha, suv) {
-    this.non = non;
-    this.lapsha = lapsha;
-    this.suv = suv;
-  }
+// class Shop {
+//   constructor(non, lapsha, suv) {
+//     this.non = non;
+//     this.lapsha = lapsha;
+//     this.suv = suv;
+//   }
 
-  qoldiq() {
-    const vaqt = new Date().toLocaleTimeString();
-    console.log(
-      `${vaqt} sizda hozir ${this.non} ta non, ${this.lapsha} ta lapsha, ${this.suv} ta suv bor`
-    );
-  }
+//   qoldiq() {
+//     const vaqt = new Date().toLocaleTimeString();
+//     console.log(
+//       `${vaqt} sizda hozir ${this.non} ta non, ${this.lapsha} ta lapsha, ${this.suv} ta suv bor`
+//     );
+//   }
 
-  sotish(nomi, miqdor) {
-    const vaqt = new Date().toLocaleTimeString();
+//   sotish(nomi, miqdor) {
+//     const vaqt = new Date().toLocaleTimeString();
 
-    if (!this[nomi]) {
-      console.log(`${vaqt} Bunday maxsulot yo'q`);
-    } else if (this[nomi] < miqdor) {
-      console.log(
-        `${vaqt} Sizda ${miqdor} ta  ${nomi} mahsuloti yo'q, Faqat ${this[nomi]} ta ${nomi} mavjud. `
-      );
-    } else {
-      this[nomi] -= miqdor;
-      console.log(`${vaqt} Hozir ${miqdor} ta ${nomi} sotildi`);
-    }
-  }
+//     if (!this[nomi]) {
+//       console.log(`${vaqt} Bunday maxsulot yo'q`);
+//     } else if (this[nomi] < miqdor) {
+//       console.log(
+//         `${vaqt} Sizda ${miqdor} ta  ${nomi} mahsuloti yo'q, Faqat ${this[nomi]} ta ${nomi} mavjud. `
+//       );
+//     } else {
+//       this[nomi] -= miqdor;
+//       console.log(`${vaqt} Hozir ${miqdor} ta ${nomi} sotildi`);
+//     }
+//   }
 
-  qabul(nomi, miqdor) {
-    const vaqt = new Date().toLocaleTimeString();
-    if (!this[nomi]) {
-      console.log(`${vaqt} Bunday mahsulot yo'q`);
-    } else {
-      this[nomi] += miqdor;
-      console.log(`${vaqt} Siz hozir ${nomi} ${miqdor} ta qabul qilib oldiz`);
-    }
-  }
-}
+//   qabul(nomi, miqdor) {
+//     const vaqt = new Date().toLocaleTimeString();
+//     if (!this[nomi]) {
+//       console.log(`${vaqt} Bunday mahsulot yo'q`);
+//     } else {
+//       this[nomi] += miqdor;
+//       console.log(`${vaqt} Siz hozir ${nomi} ${miqdor} ta qabul qilib oldiz`);
+//     }
+//   }
+// }
 
-const shop = new Shop(4, 5, 2);
+// const shop = new Shop(4, 5, 2);
 
-shop.qoldiq();
-console.log(shop);
-shop.sotish("non", 7);
-shop.qabul("suv", 4);
-// setTimeout(() => {
-//   shop.qoldiq();
-// }, 5000);
-shop.qoldiq();
+// shop.qoldiq();
+// console.log(shop);
+// shop.sotish("non", 7);
+// shop.qabul("suv", 4);
+// // setTimeout(() => {
+// //   shop.qoldiq();
+// // }, 5000);
+// shop.qoldiq();
+
 /*B-TASK: 
 
 Shunday function tuzing, u 1ta string parametrga ega bolsin, hamda osha stringda qatnashgan raqamlarni sonini bizga return qilsin.
 MASALAN countDigits("ad2a54y79wet0sfgb9") 7ni return qiladi.
 
-@MITASK
+
 */
 
 // function countLetter(son) {

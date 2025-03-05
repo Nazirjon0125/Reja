@@ -17,14 +17,14 @@ const db = require("./server").db();
 const mongodb = require("mongodb");
 
 // 1 kirish code
-app.use(express.static("public")); //har qanday brauserdan kirilganda public folderi ochiq degani
-app.use(express.json()); //  json formatdagi datani object formatga o'girib beradi
-app.use(express.urlencoded({ extended: true })); // HTML dan form requiest qilib beradi
+app.use(express.static("public")); // MiddleWare DP //har qanday brauserdan kirilganda public folderi ochiq degani
+app.use(express.json()); // MiddleWare DP => rest API//  json formatdagi datani object formatga o'girib beradi
+app.use(express.urlencoded({ extended: true })); // MiddleWare DP => traditional API // HTML dan form requiest qilib beradi
 // 2 Session
 
 // 3 Views code
 app.set("views", "views");
-app.set("view engine", "ejs"); // EJS da backend orqali frontedni yasaymiz
+app.set("view engine", "ejs"); // EJS da backend orqali frontedni yasaymiz BSSR and SPA
 
 // 4 Routing code
 app.post("/create-item", (req, res) => {
