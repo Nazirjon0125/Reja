@@ -1,3 +1,15 @@
+//E-TASK:
+
+// Shunday function tuzing, u bitta string argumentni qabul qilib osha stringni teskari qilib return qilsin.
+// MASALAN: getReverse("hello") return qilsin "olleh"
+
+function mitE(a) {
+  const result = a.split("").reverse("").join("");
+  return result;
+}
+
+console.log(mitE("hello"));
+
 // D-TASK:
 
 // Shunday function tuzing, u 2ta string parametr ega bolsin, hamda agar har ikkala string bir hil harflardan iborat bolsa true aks holda false qaytarsin
@@ -11,14 +23,14 @@
 // const d = c.split("");
 // console.log(d.sort());
 
-function mit(a, b) {
-  const c = a.split("").sort().join("");
-  const d = b.split("").sort().join("");
+// function mit(a, b) {
+//   const c = a.split("").sort().join("");
+//   const d = b.split("").sort().join("");
 
-  return c === d;
-}
+//   return c === d;
+// }
 
-console.log(mit("mitgroup", "gmtiptou"));
+// console.log(mit("mitgroup", "gmtiptou"));
 
 // MITASK-C
 

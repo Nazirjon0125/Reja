@@ -1,5 +1,5 @@
 console.log("Web serverni boshlash");
-const express = require("express");
+const express = require("express"); // NodeJS web serverni qurish un hizmat qiladi
 const res = require("express/lib/response");
 const app = express();
 const fs = require("fs");
@@ -20,7 +20,7 @@ const mongodb = require("mongodb");
 app.use(express.static("public")); // MiddleWare DP //har qanday brauserdan kirilganda public folderi ochiq degani
 app.use(express.json()); // MiddleWare DP => rest API//  json formatdagi datani object formatga o'girib beradi
 app.use(express.urlencoded({ extended: true })); // MiddleWare DP => traditional API // HTML dan form requiest qilib beradi
-// 2 Session
+// 2 Session - AUTHENTICATION (login ,sign)
 
 // 3 Views code
 app.set("views", "views");
